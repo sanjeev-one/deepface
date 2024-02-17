@@ -37,10 +37,10 @@ def build_model(model_name: str) -> Any:
         "Race": Race.RaceClient,
     }
 
-    if not "model_obj" in globals():
+    if "model_obj" not in globals():
         model_obj = {}
 
-    if not model_name in model_obj:
+    if model_name not in model_obj:
         model = models.get(model_name)
         if model:
             model = model()

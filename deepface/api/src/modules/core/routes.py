@@ -105,3 +105,41 @@ def analyze():
     logger.debug(demographies)
 
     return demographies
+
+@blueprint.route("/find", methods=["POST"])
+def find():
+    input_args = request.get_json()
+
+    if input_args is None:
+        return {"message": "empty input set passed"}, 400
+
+    img_path = input_args.get("img") or input_args.get("img_path")
+    if img_path is None:
+        return {"message": "you must pass img_path input"}, 400
+
+    db_path = input_args.get("db_path")
+    if db_path is None:
+        return {"message": "you must pass db_path input"}, 400
+
+    model_name = input_args.get("model_name", "VGG-Face")
+    distance_metric = input_args.get("distance_metric", "cosine")
+    detector_backend = input_args.get("detector_backend", "opencv")
+    enforce_detection = input_args.get("enforce_detection", True)
+    align = input_args.get("align", True)
+    threshold = input_args.get("threshold", None)  # Optional threshold for filtering results
+
+    # Assuming service.find is implemented similarly to service.represent, service.verify, etc.
+    results = service.find(
+        img_path=img_path,
+        db_path=db_path,
+        model_name=model_name,
+        distance_metric=distance_metric,
+        detector_backend=detector_backend,
+        enforce_detection=enforce_detection,
+        align=align,
+        threshold=threshold
+    )
+
+    logger.debug(results)
+
+    return results

@@ -1,4 +1,5 @@
 from deepface import DeepFace
+from typing import List, Optional, Union
 
 # pylint: disable=broad-except
 
@@ -52,3 +53,38 @@ def analyze(img_path, actions, detector_backend, enforce_detection, align):
         return result
     except Exception as err:
         return {"error": f"Exception while analyzing: {str(err)}"}, 400
+
+
+def find(
+    img_path: Union[str, np.ndarray],
+    db_path: str,
+    model_name: str = "VGG-Face",
+    distance_metric: str = "cosine",
+    enforce_detection: bool = True,
+    detector_backend: str = "opencv",
+    align: bool = True,
+    expand_percentage: int = 0,
+    threshold: Optional[float] = None,
+    normalization: str = "base",
+    silent: bool = False,
+) -> Union[List[pd.DataFrame], tuple]:
+    """
+    Wrapper function to call DeepFace.find with the provided arguments.
+    """
+    try:
+        results = DeepFace.find(
+            img_path=img_path,
+            db_path=db_path,
+            model_name=model_name,
+            distance_metric=distance_metric,
+            enforce_detection=enforce_detection,
+            detector_backend=detector_backend,
+            align=align,
+            expand_percentage=expand_percentage,
+            threshold=threshold,
+            normalization=normalization,
+            silent=silent,
+        )
+        return results
+    except Exception as err:
+        return {"error": f"Exception while finding: {str(err)}"}, 400

@@ -40,7 +40,7 @@ def build_model(detector_backend: str) -> Any:
         "fastmtcnn": FastMtCnn.FastMtCnnClient,
     }
 
-    if not "face_detector_obj" in globals():
+    if "face_detector_obj" not in globals():
         face_detector_obj = {}
 
     built_models = list(face_detector_obj.keys())

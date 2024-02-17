@@ -22,6 +22,6 @@ docker run --net="host" deepface
 # to access the inside of docker image when it is in running status
 # docker exec -it <CONTAINER_ID> /bin/sh
 
-# healthcheck
-# sleep 3s
-# curl localhost:5000
+ healthcheck
+ sleep 3s
+ curl localhost:5000
