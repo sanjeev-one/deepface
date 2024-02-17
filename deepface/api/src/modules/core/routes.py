@@ -143,6 +143,8 @@ def find():
     )
 
     logger.debug(results)
+    if not results:  # Check if results list is empty
+        return {"message": "No face found"}, 404  # Return an error message and a 404 status code
 
     # Convert each DataFrame in the list to a dictionary and collect them in a list
     results_dicts = [
