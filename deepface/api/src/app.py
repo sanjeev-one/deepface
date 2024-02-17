@@ -1,7 +1,7 @@
 # 3rd parth dependencies
 from flask import Flask
 from deepface.api.src.modules.core.routes import blueprint
-from cors import CORS
+from flask_cors import CORS
 
 
 def create_app():
