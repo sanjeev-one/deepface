@@ -108,6 +108,7 @@ def analyze():
 
 @blueprint.route("/find", methods=["POST"])
 def find():
+    logger.debug("Find route called")
     input_args = request.get_json()
 
     if input_args is None:
