@@ -144,6 +144,8 @@ def find():
 
     logger.debug(results)
 
-    # Convert the DataFrame to a dictionary before returning
-    results_dict = results.to_dict(orient="records")  # Converts DataFrame to a list of dictionaries
-    return {"data": results_dict}   
+    # Convert each DataFrame in the list to a dictionary and collect them in a list
+    results_dicts = [
+        df.to_dict(orient="records") for df in results
+    ]  # List comprehension to convert each DataFrame
+    return {"data": results_dicts}
