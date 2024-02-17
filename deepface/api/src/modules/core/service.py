@@ -1,5 +1,4 @@
 from deepface import DeepFace
-from typing import List, Optional, Union
 
 # pylint: disable=broad-except
 
@@ -56,7 +55,7 @@ def analyze(img_path, actions, detector_backend, enforce_detection, align):
 
 
 def find(
-    img_path: Union[str, np.ndarray],
+    img_path: str,
     db_path: str,
     model_name: str = "VGG-Face",
     distance_metric: str = "cosine",
@@ -67,7 +66,7 @@ def find(
     threshold: Optional[float] = None,
     normalization: str = "base",
     silent: bool = False,
-) -> Union[List[pd.DataFrame], tuple]:
+):
     """
     Wrapper function to call DeepFace.find with the provided arguments.
     """
