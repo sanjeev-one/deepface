@@ -106,6 +106,7 @@ def analyze():
 
     return demographies
 
+
 @blueprint.route("/find", methods=["POST"])
 def find():
     logger.debug("Find route called")
@@ -118,7 +119,7 @@ def find():
     if img_path is None:
         return {"message": "you must pass img_path input"}, 400
 
-    db_path = "/data"
+    db_path = "/app/data"
     if db_path is None:
         return {"message": "you must pass db_path input"}, 400
 
@@ -127,7 +128,7 @@ def find():
     detector_backend = input_args.get("detector_backend", "opencv")
     enforce_detection = input_args.get("enforce_detection", True)
     align = input_args.get("align", True)
-    #threshold = input_args.get("threshold", None)  # Optional threshold for filtering results
+    # threshold = input_args.get("threshold", None)  # Optional threshold for filtering results
 
     # Assuming service.find is implemented similarly to service.represent, service.verify, etc.
     results = service.find(
@@ -138,7 +139,7 @@ def find():
         detector_backend=detector_backend,
         enforce_detection=enforce_detection,
         align=align,
-        #threshold=threshold
+        # threshold=threshold
     )
 
     logger.debug(results)
