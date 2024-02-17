@@ -63,7 +63,7 @@ def find(
     detector_backend: str = "opencv",
     align: bool = True,
     expand_percentage: int = 0,
-    threshold: Optional[float] = None,
+    
     normalization: str = "base",
     silent: bool = False,
 ):
@@ -80,7 +80,7 @@ def find(
             detector_backend=detector_backend,
             align=align,
             expand_percentage=expand_percentage,
-            threshold=threshold,
+            
             normalization=normalization,
             silent=silent,
         )
