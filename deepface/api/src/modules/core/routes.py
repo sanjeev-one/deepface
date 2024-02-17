@@ -145,16 +145,8 @@ def find():
     logger.debug(results)
     if not results:  # Check if results is empty
         return {"message": "No face found"}, 404
-
-    # Check if results is already a dictionary or a list of dictionaries
-    if isinstance(results, dict):
-        # Directly return the dictionary wrapped in a list if results is a single dict
-        results_dicts = [results]
-    elif isinstance(results, list) and all(isinstance(item, dict) for item in results):
-        # If results is a list of dictionaries, use it directly
-        results_dicts = results
-    else:
-        # If results is a list of DataFrames, convert each to a dictionary
-        results_dicts = [df.to_dict(orient="records") for df in results]
+    results_dicts = [
+        df.to_dict(orient="records") if isinstance(df, pd.DataFrame) else df for df in results
+    ]
 
     return {"data": results_dicts}
