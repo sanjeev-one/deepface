@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from deepface.api.src.modules.core import service
 from deepface.commons.logger import Logger
-
+import pandas as pd
 logger = Logger(module="api/src/routes.py")
 
 blueprint = Blueprint("routes", __name__)
