@@ -2,6 +2,20 @@ from flask import Blueprint, request
 from deepface.api.src.modules.core import service
 from deepface.commons.logger import Logger
 import pandas as pd
+
+import base64
+import requests
+
+
+def download_image_and_convert_to_base64(image_url):
+    response = requests.get(image_url)
+    if response.status_code == 200:
+        image_data = response.content
+        base64_image = base64.b64encode(image_data).decode('utf-8')
+        return base64_image
+    else:
+        return None
+
 logger = Logger(module="api/src/routes.py")
 
 blueprint = Blueprint("routes", __name__)
@@ -56,7 +70,13 @@ def verify():
 
     if img2_path is None:
         return {"message": "you must pass img2_path input"}
-
+    
+    if img2_path.startswith("http"):
+        img2_path = download_image_and_convert_to_base64(img2_path)
+    if img1_path.startswith("http"):
+        img1_path = download_image_and_convert_to_base64(img1_path)
+        
+        
     model_name = input_args.get("model_name", "VGG-Face")
     detector_backend = input_args.get("detector_backend", "opencv")
     enforce_detection = input_args.get("enforce_detection", True)
