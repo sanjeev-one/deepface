@@ -118,9 +118,12 @@ def find():
     img_path = input_args.get("img") or input_args.get("img_path")
     if img_path is None:
         return {"message": "you must pass img_path input"}, 400
+    
+    db_path = "/app/data"
+    
     if input_args.get("judge") == "true":
         db_path = "/app/judges"
-    db_path = "/app/data"
+        
     if db_path is None:
         return {"message": "you must pass db_path input"}, 400
 
