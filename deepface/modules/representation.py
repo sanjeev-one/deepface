@@ -13,7 +13,7 @@ from deepface.models.FacialRecognition import FacialRecognition
 def represent(
     img_path: Union[str, np.ndarray],
     model_name: str = "VGG-Face",
-    enforce_detection: bool = True,
+    enforce_detection: bool = False,
     detector_backend: str = "opencv",
     align: bool = True,
     expand_percentage: int = 0,

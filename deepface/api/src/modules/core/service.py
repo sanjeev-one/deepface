@@ -58,7 +58,7 @@ def find(
     db_path: str,
     model_name: str = "VGG-Face",
     distance_metric: str = "cosine",
-    enforce_detection: bool = True,
+    enforce_detection: bool = False,
     detector_backend: str = "opencv",
     align: bool = True,
     expand_percentage: int = 0,

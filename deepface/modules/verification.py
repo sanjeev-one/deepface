@@ -16,7 +16,7 @@ def verify(
     model_name: str = "VGG-Face",
     detector_backend: str = "opencv",
     distance_metric: str = "cosine",
-    enforce_detection: bool = True,
+    enforce_detection: bool = False,
     align: bool = True,
     expand_percentage: int = 0,
     normalization: str = "base",

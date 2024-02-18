@@ -29,7 +29,7 @@ def extract_faces(
     img_path: Union[str, np.ndarray],
     target_size: Optional[Tuple[int, int]] = (224, 224),
     detector_backend: str = "opencv",
-    enforce_detection: bool = True,
+    enforce_detection: bool = False,
     align: bool = True,
     expand_percentage: int = 0,
     grayscale: bool = False,

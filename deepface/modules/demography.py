@@ -13,7 +13,7 @@ from deepface.extendedmodels import Gender, Race, Emotion
 def analyze(
     img_path: Union[str, np.ndarray],
     actions: Union[tuple, list] = ("emotion", "age", "gender", "race"),
-    enforce_detection: bool = True,
+    enforce_detection: bool = False,
     detector_backend: str = "opencv",
     align: bool = True,
     expand_percentage: int = 0,
