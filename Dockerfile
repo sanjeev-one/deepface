@@ -24,7 +24,7 @@ COPY ./package_info.json /app/
 COPY ./setup.py /app/
 COPY ./README.md /app/
 COPY ./data /app/data
-COPY ./judges /app/judges
+COPY ./judges/downloads /app/judges
 
 # -----------------------------------
 # if you plan to use a GPU, you should install the 'tensorflow-gpu' package
